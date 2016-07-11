@@ -1,0 +1,31 @@
+{
+    "author": "andreas.zielke@gmail.com",
+    "dependencies": {},
+    "keywords": [],
+    "name": "mask",
+    "pebble": {
+        "capabilities": [
+            ""
+        ],
+        "displayName": "Mask",
+        "enableMultiJS": true,
+        "messageKeys": [],
+        "projectType": "native",
+        "resources": {
+            "media": [
+                {
+                    "file": "data/frog_cloud.pdc",
+                    "name": "FROG_CLOUD",
+                    "targetPlatforms": null,
+                    "type": "raw"
+                }
+            ]
+        },
+        "sdkVersion": "3",
+        "uuid": "59df8917-292d-451e-9352-5cae989e65f8",
+        "watchapp": {
+            "watchface": false
+        }
+    },
+    "version": "1.0.0"
+}
