@@ -14,6 +14,18 @@
         "resources": {
             "media": [
                 {
+                    "file": "images/sunny_transparent.png",
+                    "name": "SUNNY_TRANSPARENT",
+                    "targetPlatforms": null,
+                    "type": "png-trans"
+                },
+                {
+                    "file": "images/sunny.png",
+                    "name": "SUNNY",
+                    "targetPlatforms": null,
+                    "type": "bitmap"
+                },
+                {
                     "file": "data/frog_cloud.pdc",
                     "name": "FROG_CLOUD",
                     "targetPlatforms": null,

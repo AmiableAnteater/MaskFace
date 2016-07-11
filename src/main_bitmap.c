@@ -1,20 +1,21 @@
-/*
-
 #include <pebble.h>
 #include "effect_layer.h"
 
 static Window *s_main_window;
-static GDrawCommandImage *s_command_image;
+static GBitmap *s_bitmap;
 static Layer *s_canvas_layer;
 EffectLayer* h1;
 
 
 static void update_proc(Layer *layer, GContext *ctx) {
-  // Set the origin offset from the context for drawing the image
-  GPoint origin = GPoint(0, 0);
-
-  // Draw the GDrawCommandImage to the GContext
-  gdraw_command_image_draw(ctx, s_command_image, origin);
+  // Get the bounds of the image
+  GRect bitmap_bounds = gbitmap_get_bounds(s_bitmap);
+  
+  // Set the compositing mode (GCompOpSet is required for transparency)
+  graphics_context_set_compositing_mode(ctx, GCompOpSet);
+  
+  // Draw the image
+  graphics_draw_bitmap_in_rect(ctx, s_bitmap, bitmap_bounds);
 }
 
 static void main_window_load(Window *window) {
@@ -33,12 +34,11 @@ static void main_window_load(Window *window) {
 
 static void main_window_unload(Window *window) {
   layer_destroy(s_canvas_layer);
-  gdraw_command_image_destroy(s_command_image);
 }
 
 static void init() {
   // Create the object from resource file
-  s_command_image = gdraw_command_image_create_with_resource(RESOURCE_ID_FROG_CLOUD);
+  s_bitmap = gbitmap_create_with_resource(RESOURCE_ID_SUNNY);
   
   s_main_window = window_create();
   window_set_background_color(s_main_window, GColorBlueMoon);
@@ -58,6 +58,8 @@ static void init() {
 }
 
 static void deinit() {
+  // Destroy the image data
+  gbitmap_destroy(s_bitmap);
   window_destroy(s_main_window);
 }
 
@@ -66,5 +68,3 @@ int main() {
   app_event_loop();
   deinit();
 }
-
-*/
